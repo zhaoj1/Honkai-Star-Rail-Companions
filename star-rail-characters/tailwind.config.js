@@ -15,11 +15,17 @@ module.exports = {
         'light-blue': '#2C74B3',
         'medium-light-blue': '#205295',
         'medium-dark-purple': '#144272',
-        'dark-blue': '#0A2647'
+        'dark-blue': '#0A2647',
+        '4star-light': '#8556C8',
+        '4star-dark': '#453F6F',
+        '5star-light': '#CCA267',
+        '5star-dark': '#8F574C',
+        'selected-gold': '#F0C843',
+        'avatar-icon': '#898374'
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      }
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))'
+      },
     },
   },
   plugins: [],

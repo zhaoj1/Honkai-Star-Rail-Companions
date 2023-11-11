@@ -1,11 +1,16 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Player from './player.jsx'
+import CharacterList from './characterList.jsx'
+import CharacterDetails from './characterDetails.jsx'
 
 export default function Page() {
   // const uid = localStorage.getItem("uid")
   const uid = 601038074
-  const [player, setPlayer] = useState({})
-  const [characters, setCharacters] = useState([])
+  const asset_base_url = 'https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/'
+
+  const [player, setPlayer] = useState(null)
+  const [characters, setCharacters] = useState(null)
   const [currentChar, setCurrentChar] = useState(null)
 
   useEffect(() => {
@@ -18,22 +23,25 @@ export default function Page() {
     getData();
   }, [])
 
+  function createAssetUrl(asset){
+    // move this to routes.js instead
+    return asset_base_url + asset
+  }
+
   return (
-    <main className="h-full text-white bg-gradient-to-bl from-dark-purple from-65% to-dark-blue">
-      <div className="flex justify-center items-center flex-col h-full">
-        <div>
-          {player.nickname} - UID{player.uid} - Lv. {player.level} 
-        </div>
-        <div>
-          {characters.length > 0 && 
-            characters.map((char) => 
-              char.id
-            )
-          }
-        </div>
-        {currentChar && 
-          <div>
-            <Character character={currentChar} />
+    <main className="h-full text-white bg-gradient-radial from-dark-purple from-20% to-dark-blue">
+      <img src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/logo/bg.png" class="h-full opacity-10 absolute object-contain" />
+      <div className="flex justify-center items-center flex-col h-full relative">
+        {player && <Player player={player} createAssetUrl={createAssetUrl} />}
+        {characters && 
+          <div className="flex flex-col">
+            <CharacterList 
+              characters={characters} 
+              createAssetUrl={createAssetUrl} 
+              currentChar={currentChar}
+              setCurrentChar={setCurrentChar}
+            />
+            {currentChar && <CharacterDetails character={characters.find((char) => char.id == currentChar)} createAssetUrl={createAssetUrl} />}
           </div>
         }
       </div>
