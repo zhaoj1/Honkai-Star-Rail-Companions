@@ -19,6 +19,7 @@ export default function Page() {
       const data = await res.json()
       setPlayer(data.player)
       setCharacters(data.characters)
+      setCurrentChar(data.characters[0].id)
     }
     getData();
   }, [])
@@ -30,11 +31,11 @@ export default function Page() {
 
   return (
     <main className="h-full text-white bg-gradient-radial from-dark-purple from-20% to-dark-blue">
-      <img src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/logo/bg.png" class="h-full opacity-10 absolute object-contain" />
-      <div className="flex justify-center items-center flex-col h-full relative">
+      <img src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/logo/bg.png" className="h-full opacity-10 absolute object-contain" />
+      <div className="flex items-center flex-col h-full relative pt-10">
         {player && <Player player={player} createAssetUrl={createAssetUrl} />}
         {characters && 
-          <div className="flex flex-col">
+          <div className="flex flex-col w-9/12">
             <CharacterList 
               characters={characters} 
               createAssetUrl={createAssetUrl} 

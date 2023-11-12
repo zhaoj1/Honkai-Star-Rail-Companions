@@ -14,7 +14,7 @@ module.exports = {
         'light-purple': '#635985',
         'light-blue': '#2C74B3',
         'medium-light-blue': '#205295',
-        'medium-dark-purple': '#144272',
+        'medium-dark-blue': '#144272',
         'dark-blue': '#0A2647',
         '4star-light': '#8556C8',
         '4star-dark': '#453F6F',
@@ -26,6 +26,13 @@ module.exports = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))'
       },
+      height: {
+        'card': '40rem',
+        'img': '35rem'
+      },
+      width: {
+        'rank': '312px'
+      }
     },
   },
   plugins: [],
