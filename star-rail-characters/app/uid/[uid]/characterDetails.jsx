@@ -9,8 +9,8 @@ export default function CharacterList({character, createAssetUrl}) {
   return (
     <div className="flex justify-center items-center">
       {console.log(character)}
-      <div className='h-card w-full m-4 bg-dark-blue rounded-lg p-4 flex'>
-        <div className="pr-5">
+      <div className='h-card w-full m-4 bg-dark-blue rounded-lg p-4 flex justify-between'>
+        <div className="pr-5 w-1/4">
           <div className="flex justify-between mb-2">
             <div>
               <div className="text-4xl">
@@ -70,60 +70,53 @@ export default function CharacterList({character, createAssetUrl}) {
           <div>
             <img className="-translate-y-60 absolute opacity-20" src={createAssetUrl(path.icon)} />
           </div>
-          <div>
-            
-          </div>
         </div>
         <div>
           <img src={createAssetUrl(portrait)} className='h-img' />
-          <div className='flex flex-row w-rank ml-20'>
-            {rank_icons.map(((icon, index) => 
-              <div key={"eidolon-" + index} className="h-11 w-11 rounded-full border border-white-500 p-1 m-1">
-                <img className="h-9 w-9" src={createAssetUrl(icon)} />
-              </div>
-            ))}
+          <div className="flex justify-center" >
+            <div className='flex flex-row w-rank'>
+              {rank_icons.map(((icon, index) => 
+                <div key={"eidolon-" + index} className="h-11 w-11 rounded-full border border-white-500 p-1 m-1">
+                  <img className="h-9 w-9" src={createAssetUrl(icon)} />
+                </div>
+              ))}
+            </div>
           </div>
-          <div className='flex flex-row-reverse relative bottom-12 w-rank ml-20'>
-            {rank_icons.slice(rank, 6).map((index => 
-              <div key={"eidolon-lock-" + index} className="h-11 w-11 flex flex-row justify-center items-center bg-slate-900/70 rounded-full mx-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                </svg>
-              </div>
-            ))}
+          <div className="flex justify-center">
+            <div className='flex flex-row-reverse relative bottom-12 w-rank'>
+              {rank_icons.slice(rank, 6).map((index => 
+                <div key={"eidolon-lock-" + index} className="h-11 w-11 flex flex-row justify-center items-center bg-slate-900/70 rounded-full mx-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                  </svg>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
+        <div className="w-1/4">
+          {Object.keys(attribute_totals).map(att =>
+            <div className="flex justify-between" key={"totals-" + attribute_totals[att].name}>
+              <div className="flex flex-row items-center">
+                <img className="h-12" src={createAssetUrl(attribute_totals[att].icon)} />
+                <span className="pl-1">
+                  {attribute_totals[att].name}
+                </span>
+              </div>
+              <div className="flex flex-row items-center">
+                {attribute_totals[att].percent ? 
+                  attribute_totals[att].name == "Energy Regeneration Rate" ?
+                    ((attribute_totals[att].value + 1) * 100).toFixed(1) + "%"
+                    :
+                    (attribute_totals[att].value * 100).toFixed(1) + "%"
+                  :
+                  Math.floor(attribute_totals[att].value)
+                }
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-      {/* <div>
-        {name}
-      </div>
-      <div>
-        Lv. {level}
-      </div>
-      <div>
-        {additions.map((ele => ele.field))}
-      </div>
-      <div>
-        {attributes.map((ele => ele.field))}
-      </div>
-      <div className="flex flex-row">
-        <img className="h-20" src={createAssetUrl(element.icon)} />
-        <img className="h-20" src={createAssetUrl(light_cone.icon)} />
-        <img className="h-20" src={createAssetUrl(path.icon)} />
-        <img className="h-20" src={createAssetUrl(portrait)} />
-      </div>
-      <div className="flex flex-row">
-        {rank_icons.map((icon => <img className="h-20" src={createAssetUrl(icon)} />))}
-      </div>
-      <div className="flex flex-row">
-        {relic_sets.map((set => <img className="h-20" src={createAssetUrl(set.icon)} />))}
-      </div>
-      <div className="flex flex-row">
-        {relics.map((relic => <img className="h-20" src={createAssetUrl(relic.icon)} />))}
-      </div>
-      <div className="flex flex-row">
-        {skills.map((skill => <img className="h-20" src={createAssetUrl(skill.icon)} />))}
-      </div> */}
     </div>
   )
 }
