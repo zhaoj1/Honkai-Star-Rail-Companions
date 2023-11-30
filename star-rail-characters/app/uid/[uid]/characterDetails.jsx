@@ -1,4 +1,5 @@
 import SkillTrace from './skillTrace.jsx'
+import Image from 'next/image'
 
 export default function CharacterList({character, createAssetUrl}) {
   const {name, additions, attributes, attribute_totals, element, level, light_cone, path, portrait, rank, rank_icons, relic_sets, relic_sets_data, relics, skills } = character 
@@ -9,9 +10,9 @@ export default function CharacterList({character, createAssetUrl}) {
   return (
     <div className="flex justify-center items-center">
       {console.log(character)}
-      <div className='h-card w-full m-4 bg-dark-blue rounded-lg p-4 flex justify-between'>
-        <div className="pr-5 w-1/4">
-          <div className="flex justify-between mb-2">
+      <div className='h-card w-full m-4 rounded-lg p-7 flex justify-between bg-card-bg'>
+        <div className="pr-2 w-1/5">
+          <div className="flex justify-between mb-6">
             <div>
               <div className="text-4xl">
                 {name}
@@ -19,20 +20,20 @@ export default function CharacterList({character, createAssetUrl}) {
               <div className="text-sm">
                 Lv. {level}
               </div>
+              <div className="flex items-center">
+                <img className="w-10 mr-2 mt-2" src={createAssetUrl(path.icon)} /> {path.name}
+              </div>
             </div>
             <div className="flex items-center">
-              <img className="h-14" src={createAssetUrl(element.icon)} />
+              <img className="h-20" src={createAssetUrl(element.icon)} />
             </div>
-          </div>
-          <div className="flex items-center">
-            <img className="w-10 mr-2" src={createAssetUrl(path.icon)} /> {path.name}
           </div>
           <div className="flex my-4">
             <div className="flex flex-col items-center w-12">
               <img src={createAssetUrl(light_cone.portrait)} />
               <img className="scale-150 pt-1" src={createAssetUrl("/icon/deco/Rarity" + light_cone.rarity + ".png")} />
             </div>
-            <div className="flex flex-col pl-4">
+            <div className="flex flex-col pl-2">
               <span>
                 {light_cone.name}
               </span>
@@ -72,7 +73,7 @@ export default function CharacterList({character, createAssetUrl}) {
           </div>
         </div>
         <div>
-          <img src={createAssetUrl(portrait)} className='h-img' />
+          <img src={createAssetUrl(portrait)} className='h-img w-img' />
           <div className="flex justify-center" >
             <div className='flex flex-row w-rank'>
               {rank_icons.map(((icon, index) => 
@@ -94,7 +95,7 @@ export default function CharacterList({character, createAssetUrl}) {
             </div>
           </div>
         </div>
-        <div className="w-1/4">
+        <div className="w-1/4 bg-dark-grey/[0.6] p-2 pr-3 rounded-md">
           {Object.keys(attribute_totals).map(att =>
             <div className="flex justify-between" key={"totals-" + attribute_totals[att].name}>
               <div className="flex flex-row items-center">
@@ -103,18 +104,31 @@ export default function CharacterList({character, createAssetUrl}) {
                   {attribute_totals[att].name}
                 </span>
               </div>
-              <div className="flex flex-row items-center">
-                {attribute_totals[att].percent ? 
-                  attribute_totals[att].name == "Energy Regeneration Rate" ?
-                    ((attribute_totals[att].value + 1) * 100).toFixed(1) + "%"
+              <div className="flex flex-col justify-center items-end">
+                <span className="font-semibold">
+                  {attribute_totals[att].percent ? 
+                    attribute_totals[att].name == "Energy Regeneration Rate" ?
+                      ((attribute_totals[att].value + 1) * 100).toFixed(1) + "%"
+                      :
+                      (attribute_totals[att].value * 100).toFixed(1) + "%"
                     :
-                    (attribute_totals[att].value * 100).toFixed(1) + "%"
-                  :
-                  Math.floor(attribute_totals[att].value)
-                }
+                    Math.floor(attribute_totals[att].value)
+                  }
+                </span>
+                <span className="text-sm">
+                  {attributes.find(e => e.field == att)?.display}
+                  {additions.find(e => e.field == att)? 
+                    <span className="text-light-blue" >
+                      {"+" + additions.find(e => e.field == att).display}
+                    </span>
+                    : null}
+                </span>
               </div>
             </div>
           )}
+        </div>
+        <div className="w-1/5">
+          relics
         </div>
       </div>
     </div>

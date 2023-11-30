@@ -12,7 +12,7 @@ module.exports = {
         // 'medium-dark-purple': '#393053',
         // 'medium-light-purple': '#443C68',
         'light-purple': '#635985',
-        // 'light-blue': '#2C74B3',
+        'light-blue': '#6CADE6',
         // 'medium-light-blue': '#205295',
         // 'medium-dark-blue': '#144272',
         'dark-blue': '#0A2647',
@@ -26,14 +26,16 @@ module.exports = {
         'dark-grey': '#222831'
       },
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))'
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'card-bg': 'url(/star_rail_bg_by_kaerralind.png)'
       },
       height: {
         'card': '40rem',
-        'img': '35rem'
+        'img': '540px'
       },
       width: {
-        'rank': '312px'
+        'rank': '312px',
+        'img': '540px'
       }
     },
   },

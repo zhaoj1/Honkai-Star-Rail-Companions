@@ -10,13 +10,13 @@ export async function GET(request, {params}) {
   for(const char of data.characters){
     var attribute_totals = {}
     char.attributes.map((att) => {
-      attribute_totals[att.field] = {value: att.value, percent: att.percent, name: att.name, icon: att.icon}
+      attribute_totals[att.field] = {value: att.value, percent: att.percent, name: att.name, icon: att.icon, field: att.field}
     })
     char.additions.map((att) => {
       attribute_totals[att.field] ? 
         attribute_totals[att.field].value += att.value
         : 
-        attribute_totals[att.field] = {value: att.value, percent: att.percent, name: att.name, icon: att.icon}
+        attribute_totals[att.field] = {value: att.value, percent: att.percent, name: att.name, icon: att.icon, field: att.field}
     })
 
     var skills_data = new Map()
