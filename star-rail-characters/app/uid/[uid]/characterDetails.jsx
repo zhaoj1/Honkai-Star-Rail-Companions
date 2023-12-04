@@ -127,8 +127,37 @@ export default function CharacterList({character, createAssetUrl}) {
             </div>
           )}
         </div>
-        <div className="w-1/5">
-          relics
+        <div className="w-1/4">
+          {relics.map(relic =>
+            <div key={"relic-" + relic.id} className="flex ml-5 bg-dark-grey/[0.6] mb-2 p-2 rounded-lg">
+              <div>
+                <div className={`rounded-lg bg-gradient-to-bl ${relic.rarity == 4 ? "from-4star-dark" : "from-5star-dark"} ${relic.rarity == 4 ? "to-4star-light" : "to-5star-light"}`}>
+                  <img className="h-16" src={createAssetUrl(relic.icon)} />
+                </div>
+                <span className="text-sm bg-dark-grey/[0.6] absolute -translate-y-7 translate-x-8 rounded-lg p-0.5">
+                  +{relic.level}
+                </span>
+              </div>
+              <div className="flex justify-between grow">
+                <div className='flex flex-col items-center w-1/4 pl-2 text-xl font-semibold'>
+                  <img className='h-9 w-9' src={createAssetUrl(relic.main_affix.icon)} />
+                  <span>
+                    {relic.main_affix.display}
+                  </span>
+                </div>
+                <div className="grid grid-rows-2 grid-flow-col gap-2 pl-2 w-3/4">
+                  {relic.sub_affix.map(stat =>
+                    <div key={"substat-" + stat.type} className='flex'>
+                      <img className='h-6 w-6' src={createAssetUrl(stat.icon)} />
+                      <span>
+                        +{stat.display}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

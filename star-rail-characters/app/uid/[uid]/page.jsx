@@ -35,7 +35,7 @@ export default function Page() {
       <div className="flex items-center flex-col h-full relative pt-10">
         {player && <Player player={player} createAssetUrl={createAssetUrl} />}
         {characters && 
-          <div className="flex flex-col w-10/12">
+          <div className="flex flex-col w-11/12">
             <CharacterList 
               characters={characters} 
               createAssetUrl={createAssetUrl} 
