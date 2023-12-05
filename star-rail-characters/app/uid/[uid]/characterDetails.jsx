@@ -152,7 +152,7 @@ export default function CharacterList({character, createAssetUrl}) {
                 </span>
               </div>
               <div className="flex justify-between grow">
-                <div className='flex flex-col items-center w-1/4 pl-2 text-xl font-semibold'>
+                <div className='flex flex-col items-center w-1/4 pl-2 text-lg font-semibold'>
                   <img className='h-9 w-9' src={createAssetUrl(relic.main_affix.icon)} />
                   <span>
                     {relic.main_affix.display}
