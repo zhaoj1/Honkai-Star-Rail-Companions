@@ -1,5 +1,4 @@
 import SkillTrace from './skillTrace.jsx'
-import Image from 'next/image'
 
 export default function CharacterList({character, createAssetUrl}) {
   const {name, additions, attributes, attribute_totals, element, level, light_cone, path, portrait, rank, rank_icons, relic_sets, relic_sets_data, relics, skills } = character 
@@ -73,24 +72,25 @@ export default function CharacterList({character, createAssetUrl}) {
           </div>
           <div>
             {Object.keys(relic_sets_data).map(set_id => 
-              <div key={"set-" + set_id} className="flex justify-between text-sm bg-dark-grey/[0.6] rounded-lg p-2 mb-1">
+              <div key={"set-" + set_id} className="group flex justify-between text-sm bg-dark-grey/[0.6] rounded-lg p-2 mb-1">
+                <span class="absolute scale-0 translate-x-[19rem] bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 group-hover:scale-100">{relic_sets_data[set_id].desc}</span>
                 <div>
                   {relic_sets_data[set_id].name}
                 </div>
                 <div>
                   {relic_sets_data[set_id].num}
                 </div>
-                {/* {relic_sets_data[set_id].desc} */}
               </div>
             )}
           </div>
         </div>
         <div>
           <img src={createAssetUrl(portrait)} className='h-img w-img' />
-          <div className="flex justify-center" >
+          {/* <div className="flex justify-center" >
             <div className='flex flex-row w-rank'>
               {rank_icons.map(((icon, index) => 
-                <div key={"eidolon-" + index} className="h-11 w-11 rounded-full border border-white-500 p-1 m-1">
+                <div key={"eidolon-" + index} className="group h-11 w-11 rounded-full border border-white-500 p-1 m-1">
+                  <span class="absolute scale-0 translate-x-[19rem] bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 group-hover:scale-100">ok</span>
                   <img className="h-9 w-9" src={createAssetUrl(icon)} />
                 </div>
               ))}
@@ -106,7 +106,8 @@ export default function CharacterList({character, createAssetUrl}) {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
+          {/* need to refactor eidolons */}
         </div>
         <div className="w-1/4 bg-dark-grey/[0.6] p-2 pr-3 rounded-md flex flex-col justify-evenly">
           {Object.keys(attribute_totals).map(att =>
