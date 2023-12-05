@@ -30,12 +30,12 @@ module.exports = {
         'card-bg': 'url(/star_rail_bg_by_kaerralind.png)'
       },
       height: {
-        'card': '40rem',
-        'img': '540px'
+        'card': '36rem',
+        'img': '470px'
       },
       width: {
         'rank': '312px',
-        'img': '540px'
+        'img': '470px'
       }
     },
   },

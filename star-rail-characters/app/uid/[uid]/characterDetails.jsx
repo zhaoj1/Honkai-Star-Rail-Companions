@@ -52,7 +52,7 @@ export default function CharacterList({character, createAssetUrl}) {
               </div>
             </div>
           </div>
-          <div className="z-10 relative mt-10">
+          <div className="z-10 relative mt-5">
             <div className="flex justify-between">
               {skills_type_top.map(type =>
                 <div key={"skill-" + type} className="w-1/3">
@@ -68,8 +68,21 @@ export default function CharacterList({character, createAssetUrl}) {
               )}
             </div>
           </div>
+          <div className="flex justify-center">
+            <img className="h-48 -translate-y-52 absolute opacity-20" src={createAssetUrl(path.icon)} />
+          </div>
           <div>
-            <img className="-translate-y-60 absolute opacity-20" src={createAssetUrl(path.icon)} />
+            {Object.keys(relic_sets_data).map(set_id => 
+              <div key={"set-" + set_id} className="flex justify-between text-sm bg-dark-grey/[0.6] rounded-lg p-2 mb-1">
+                <div>
+                  {relic_sets_data[set_id].name}
+                </div>
+                <div>
+                  {relic_sets_data[set_id].num}
+                </div>
+                {/* {relic_sets_data[set_id].desc} */}
+              </div>
+            )}
           </div>
         </div>
         <div>
@@ -95,7 +108,7 @@ export default function CharacterList({character, createAssetUrl}) {
             </div>
           </div>
         </div>
-        <div className="w-1/4 bg-dark-grey/[0.6] p-2 pr-3 rounded-md">
+        <div className="w-1/4 bg-dark-grey/[0.6] p-2 pr-3 rounded-md flex flex-col justify-evenly">
           {Object.keys(attribute_totals).map(att =>
             <div className="flex justify-between" key={"totals-" + attribute_totals[att].name}>
               <div className="flex flex-row items-center">
@@ -127,9 +140,9 @@ export default function CharacterList({character, createAssetUrl}) {
             </div>
           )}
         </div>
-        <div className="w-1/4">
+        <div className="w-1/4 flex flex-col">
           {relics.map(relic =>
-            <div key={"relic-" + relic.id} className="flex ml-5 bg-dark-grey/[0.6] mb-2 p-2 rounded-lg">
+            <div key={"relic-" + relic.id} className="flex ml-5 bg-dark-grey/[0.6] p-2 rounded-lg mb-2 h-full">
               <div>
                 <div className={`rounded-lg bg-gradient-to-bl ${relic.rarity == 4 ? "from-4star-dark" : "from-5star-dark"} ${relic.rarity == 4 ? "to-4star-light" : "to-5star-light"}`}>
                   <img className="h-16" src={createAssetUrl(relic.icon)} />

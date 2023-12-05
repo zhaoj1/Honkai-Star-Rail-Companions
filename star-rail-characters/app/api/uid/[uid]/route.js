@@ -26,7 +26,7 @@ export async function GET(request, {params}) {
 
     var relic_sets_data = new Map()
     for(const relic_set of char.relic_sets){
-      relic_sets_data.set(relic_set.id, relic_set.num)
+      relic_sets_data.set(relic_set.id, {name: relic_set.name, num: relic_set.num, desc: relic_set.desc})
     }
 
     char.attribute_totals = attribute_totals
