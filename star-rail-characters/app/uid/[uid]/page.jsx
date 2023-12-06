@@ -30,7 +30,7 @@ export default function Page() {
   }
 
   return (
-    <main className="h-full text-white bg-gradient-radial from-dark-purple from-10% to-dark-blue">
+    <main className="h-full text-white bg-gradient-radial from-dark-purple from-20% to-dark-blue">
       <img src="https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/icon/logo/bg.png" className="h-full opacity-10 absolute object-contain" />
       <div className="flex items-center flex-col h-full relative pt-10">
         {player && <Player player={player} createAssetUrl={createAssetUrl} />}
