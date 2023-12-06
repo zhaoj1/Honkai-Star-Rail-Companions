@@ -73,7 +73,7 @@ export default function CharacterList({character, createAssetUrl}) {
           <div>
             {Object.keys(relic_sets_data).map(set_id => 
               <div key={"set-" + set_id} className="group flex justify-between text-sm bg-dark-grey/[0.6] rounded-lg p-2 mb-1">
-                <span class="absolute scale-0 translate-x-[19rem] bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 group-hover:scale-100">{relic_sets_data[set_id].desc}</span>
+                <span className="absolute scale-0 translate-x-[19rem] bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 flex flex-col gap-4 group-hover:scale-100">{relic_sets.filter(set => set.id == set_id).map(set => <span>{set.desc}</span>)}</span>
                 <div>
                   {relic_sets_data[set_id].name}
                 </div>
@@ -86,28 +86,26 @@ export default function CharacterList({character, createAssetUrl}) {
         </div>
         <div>
           <img src={createAssetUrl(portrait)} className='h-img w-img' />
-          {/* <div className="flex justify-center" >
+          <div className="flex justify-center" >
             <div className='flex flex-row w-rank'>
               {rank_icons.map(((icon, index) => 
-                <div key={"eidolon-" + index} className="group h-11 w-11 rounded-full border border-white-500 p-1 m-1">
-                  <span class="absolute scale-0 translate-x-[19rem] bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 group-hover:scale-100">ok</span>
-                  <img className="h-9 w-9" src={createAssetUrl(icon)} />
+                <div key={"eidolon-" + index} className="group mr-1">
+                  <span className="absolute scale-0 translate-x-12 bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 group-hover:scale-100">ok</span>
+                  <div className="h-11 w-11 rounded-full border border-white-500 p-1">
+                    <img className="h-9 w-9" src={createAssetUrl(icon)} />
+                  </div>
+                  {index >= rank ? 
+                    <div className="h-11 w-11 flex flex-row justify-center items-center bg-slate-900/70 rounded-full -translate-y-11">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+                      </svg>
+                    </div>  
+                    :
+                    null}
                 </div>
               ))}
             </div>
           </div>
-          <div className="flex justify-center">
-            <div className='flex flex-row-reverse relative bottom-12 w-rank'>
-              {rank_icons.slice(rank, 6).map((index => 
-                <div key={"eidolon-lock-" + index} className="h-11 w-11 flex flex-row justify-center items-center bg-slate-900/70 rounded-full mx-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
-                  </svg>
-                </div>
-              ))}
-            </div>
-          </div> */}
-          {/* need to refactor eidolons */}
         </div>
         <div className="w-1/4 bg-dark-grey/[0.6] p-2 pr-3 rounded-md flex flex-col justify-evenly">
           {Object.keys(attribute_totals).map(att =>
