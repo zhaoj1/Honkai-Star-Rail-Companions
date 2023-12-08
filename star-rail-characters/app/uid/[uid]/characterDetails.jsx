@@ -1,3 +1,6 @@
+import html2canvas from 'html2canvas';
+import { useState, useEffect } from 'react'
+
 import SkillTrace from './skillTrace.jsx'
 
 export default function CharacterList({character, createAssetUrl}) {
@@ -6,10 +9,34 @@ export default function CharacterList({character, createAssetUrl}) {
   const skills_type_top = [ "Basic ATK", "Ultimate", "Talent" ]
   const skills_type_bot = [ "Skill", "Technique" ]
 
+  function saveAs(uri, filename) {
+    var link = document.createElement('a');
+    if (typeof link.download === 'string') {
+      link.href = uri;
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } else {
+      window.open(uri);
+    }
+  }
+
+  function download(){
+    html2canvas(document.getElementById('char-card'), {
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: null
+    })
+    .then(function(canvas) {
+      saveAs(canvas.toDataURL(), `${character.name}.png`);
+    });
+  }
+
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center flex-col">
       {console.log(character)}
-      <div className='h-card w-full m-4 rounded-lg p-7 flex justify-between bg-card-bg'>
+      <div id="char-card" className='h-card w-full m-4 rounded-lg p-7 flex justify-between bg-card-bg'>
         <div className="pr-2 w-1/5">
           <div className="flex justify-between mb-6">
             <div>
@@ -173,6 +200,7 @@ export default function CharacterList({character, createAssetUrl}) {
           )}
         </div>
       </div>
+      <button id="download" className="bg-medium-grey py-1 px-4 rounded-lg text-lg hover:bg-light-grey" onClick={download}>Download</button>
     </div>
   )
 }

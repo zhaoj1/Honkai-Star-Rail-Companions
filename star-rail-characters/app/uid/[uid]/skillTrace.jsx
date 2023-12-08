@@ -5,7 +5,7 @@ export default function SkillTrace({ skill, createAssetUrl, type }) {
       {console.log(skill)}
       <span className="flex flex-col gap-3 absolute scale-0 translate-x-56 bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 group-hover:scale-100">{
         skill.map(s => 
-          <div className="flex flex-col text-sm">
+          <div key={"trace-" + s.name} className="flex flex-col text-sm">
             <span className="mb-1 text-light-blue">
               {s.name}
             </span>
