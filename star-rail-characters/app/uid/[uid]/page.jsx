@@ -5,8 +5,7 @@ import CharacterList from './characterList.jsx'
 import CharacterDetails from './characterDetails.jsx'
 
 export default function Page() {
-  // const uid = localStorage.getItem("uid")
-  const uid = 601038074
+  const uid = localStorage.getItem("uid")
   const asset_base_url = 'https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/'
 
   const [player, setPlayer] = useState(null)
@@ -25,7 +24,6 @@ export default function Page() {
   }, [])
 
   function createAssetUrl(asset){
-    // move this to routes.js instead
     return asset_base_url + asset
   }
 

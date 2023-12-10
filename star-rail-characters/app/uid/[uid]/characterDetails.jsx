@@ -1,5 +1,4 @@
 import html2canvas from 'html2canvas';
-import { useState, useEffect } from 'react'
 
 import SkillTrace from './skillTrace.jsx'
 
