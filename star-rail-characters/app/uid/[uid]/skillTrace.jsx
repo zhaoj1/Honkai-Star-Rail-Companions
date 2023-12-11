@@ -2,7 +2,6 @@ export default function SkillTrace({ skill, createAssetUrl, type }) {
   const {icon, level, type_text, desc} = skill[0]
   return (
     <div className={`group flex flex-col items-center relative ${type == "Ultimate"?"translate-y-14 z-[5]":null}`}>
-      {console.log(skill)}
       <span className="flex flex-col gap-3 absolute scale-0 translate-x-56 bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 group-hover:scale-100">{
         skill.map(s => 
           <div key={"trace-" + s.name} className="flex flex-col text-sm">

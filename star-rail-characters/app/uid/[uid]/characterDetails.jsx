@@ -34,7 +34,6 @@ export default function CharacterList({character, createAssetUrl}) {
 
   return (
     <div className="flex justify-center items-center flex-col">
-      {console.log(character)}
       <div id="char-card" className='h-card w-full m-4 rounded-lg p-7 flex justify-between bg-card-bg'>
         <div className="pr-2 w-1/5">
           <div className="flex justify-between mb-6">
