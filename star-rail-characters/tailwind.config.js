@@ -27,7 +27,8 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'card-bg': 'url(/star_rail_bg_by_kaerralind.png)'
+        'card-h': 'url(/star_rail_bg_by_kaerralind.png)',
+        'card-v': 'url(/star_rail_bg_vertical_by_kaerralind.png)'
       },
       height: {
         'card': '36rem',
