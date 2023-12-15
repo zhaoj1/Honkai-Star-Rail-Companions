@@ -1,4 +1,5 @@
 import { html2canvas } from 'html2canvas';
+import Image from 'next/image'
 
 import SkillTrace from './skillTrace.jsx'
 
@@ -45,17 +46,43 @@ export default function CharacterList({character, createAssetUrl}) {
                 Lv. {level}
               </div>
               <div className="flex items-center">
-                <img className="w-10 mr-2 mt-2" src={createAssetUrl(path.icon)} /> {path.name}
+                <div className="relative w-10 h-10 mr-2 mt-2">
+                  <Image
+                    src={createAssetUrl(path.icon)}
+                    fill={true}
+                    alt="path"
+                  />
+                </div>
+                {path.name}
               </div>
             </div>
             <div className="flex items-center">
-              <img className="h-20" src={createAssetUrl(element.icon)} />
+              <div className="relative h-20 w-20">
+                <Image
+                  src={createAssetUrl(element.icon)}
+                  fill={true}
+                  alt="element"
+                />
+              </div>
             </div>
           </div>
           <div className="flex my-4">
             <div className="flex flex-col items-center w-12">
-              <img src={createAssetUrl(light_cone.portrait)} />
-              <img className="scale-150 pt-1" src={createAssetUrl("/icon/deco/Rarity" + light_cone.rarity + ".png")} />
+              <div className="relative h-full w-full">
+                <Image
+                  src={createAssetUrl(light_cone.portrait)}
+                  fill={true}
+                  alt="light_cone"
+                />
+              </div>
+              <div className="relative h-4 w-full pt-1">
+                <Image
+                  src={createAssetUrl("/icon/deco/Rarity" + light_cone.rarity + ".png")}
+                  fill={true}
+                  alt="rarity"
+                  className="scale-150"
+                />
+              </div>
             </div>
             <div className="flex flex-col pl-2">
               <span>
@@ -70,7 +97,14 @@ export default function CharacterList({character, createAssetUrl}) {
               <div className="flex">
                 {light_cone.attributes.map((att, index) => 
                   <span key={"attribute-" + index} className="text-sm flex items-center pr-1">
-                    <img className="h-7" src={createAssetUrl(att.icon)} /> {att.display}
+                    <div className="relative h-7 w-7">
+                      <Image
+                        src={createAssetUrl(att.icon)}
+                        fill={true}
+                        alt={att.name}
+                      />
+                    </div>
+                    {att.display}
                   </span>
                   )}
               </div>
@@ -93,7 +127,13 @@ export default function CharacterList({character, createAssetUrl}) {
             </div>
           </div>
           <div className="flex justify-center">
-            <img className="h-48 -translate-y-52 absolute opacity-20" src={createAssetUrl(path.icon)} />
+            <div className="h-48 w-48 -translate-y-52 absolute opacity-20">
+              <Image
+                src={createAssetUrl(path.icon)}
+                fill={true}
+                alt={path.name}
+              />
+            </div>
           </div>
           <div>
             {Object.keys(relic_sets_data).map(set_id => 
@@ -110,7 +150,13 @@ export default function CharacterList({character, createAssetUrl}) {
           </div>
         </div>
         <div>
-          <img src={createAssetUrl(portrait)} className='w-full 2xl:w-img' />
+          <div className="relative w-full 2xl:w-img aspect-square">
+            <Image
+              src={createAssetUrl(portrait)}
+              fill={true}
+              alt="portrait"
+            />
+          </div>
           <div className="flex justify-center w-full" >
             <div className='flex flex-row w-rank'>
               {rank_icons.map(((icon, index) => 
@@ -137,7 +183,13 @@ export default function CharacterList({character, createAssetUrl}) {
           {Object.keys(attribute_totals).map(att =>
             <div className="flex justify-between" key={"totals-" + attribute_totals[att].name}>
               <div className="flex flex-row items-center">
-                <img className="h-12" src={createAssetUrl(attribute_totals[att].icon)} />
+                <div className="h-12 w-12 relative">
+                  <Image
+                    src={createAssetUrl(attribute_totals[att].icon)}
+                    fill={true}
+                    alt={attribute_totals[att].name}
+                  />
+                </div>
                 <span className="pl-1">
                   {attribute_totals[att].name}
                 </span>
@@ -170,7 +222,13 @@ export default function CharacterList({character, createAssetUrl}) {
             <div key={"relic-" + relic.id} className="flex ml-5 bg-dark-grey/[0.6] p-2 rounded-lg mb-2 h-full">
               <div>
                 <div className={`rounded-lg bg-gradient-to-bl ${relic.rarity == 4 ? "from-4star-dark" : "from-5star-dark"} ${relic.rarity == 4 ? "to-4star-light" : "to-5star-light"}`}>
-                  <img className="h-16" src={createAssetUrl(relic.icon)} />
+                  <div className="h-16 w-16 relative">
+                    <Image
+                      src={createAssetUrl(relic.icon)}
+                      fill={true}
+                      alt={relic.name}
+                    />
+                  </div>
                 </div>
                 <span className="text-sm bg-dark-grey/[0.6] absolute -translate-y-7 translate-x-8 rounded-lg p-0.5">
                   +{relic.level}
@@ -178,7 +236,13 @@ export default function CharacterList({character, createAssetUrl}) {
               </div>
               <div className="flex justify-between grow">
                 <div className='flex flex-col items-center w-1/4 pl-2 text-lg font-semibold'>
-                  <img className='h-9 w-9' src={createAssetUrl(relic.main_affix.icon)} />
+                  <div className="h-9 w-9 relative">
+                    <Image
+                      src={createAssetUrl(relic.main_affix.icon)}
+                      fill={true}
+                      alt={relic.main_affix.name}
+                    />
+                  </div>
                   <span>
                     {relic.main_affix.display}
                   </span>
@@ -186,7 +250,13 @@ export default function CharacterList({character, createAssetUrl}) {
                 <div className="grid grid-rows-2 grid-flow-col gap-2 pl-2 w-3/4">
                   {relic.sub_affix.map(stat =>
                     <div key={"substat-" + stat.type} className='flex'>
-                      <img className='h-6 w-6' src={createAssetUrl(stat.icon)} />
+                      <div className="h-6 w-6 relative">
+                        <Image
+                          src={createAssetUrl(stat.icon)}
+                          fill={true}
+                          alt={stat.name}
+                        />
+                      </div>
                       <span>
                         +{stat.display}
                       </span>

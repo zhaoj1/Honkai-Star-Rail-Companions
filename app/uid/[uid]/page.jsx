@@ -5,7 +5,6 @@ import CharacterList from './characterList.jsx'
 import CharacterDetails from './characterDetails.jsx'
 
 export default function Page() {
-  const uid = localStorage.getItem("uid")
   const asset_base_url = 'https://raw.githubusercontent.com/Mar-7th/StarRailRes/master/'
 
   const [player, setPlayer] = useState(null)
@@ -13,14 +12,17 @@ export default function Page() {
   const [currentChar, setCurrentChar] = useState(null)
 
   useEffect(() => {
-    const getData = async () => {
-      const res = await fetch(`../api/uid/${uid}?lang=en`)
-      const data = await res.json()
-      setPlayer(data.player)
-      setCharacters(data.characters)
-      setCurrentChar(data.characters[0].id)
+    if(typeof window != 'undefined'){
+      const uid = localStorage.getItem("uid")
+      const getData = async () => {
+        const res = await fetch(`../api/uid/${uid}?lang=en`)
+        const data = await res.json()
+        setPlayer(data.player)
+        setCharacters(data.characters)
+        setCurrentChar(data.characters[0].id)
+      }
+      getData();
     }
-    getData();
   }, [])
 
   function createAssetUrl(asset){
