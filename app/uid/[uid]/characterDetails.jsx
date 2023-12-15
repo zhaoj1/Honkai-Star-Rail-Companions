@@ -217,9 +217,9 @@ export default function CharacterList({character, createAssetUrl}) {
             </div>
           )}
         </div>
-        <div className="2xl:w-1/4 flex flex-col">
+        <div className="mt-5 md:m-0 2xl:w-1/4 flex flex-col">
           {relics.map(relic =>
-            <div key={"relic-" + relic.id} className="flex ml-5 bg-dark-grey/[0.6] p-2 rounded-lg mb-2 h-full">
+            <div key={"relic-" + relic.id} className="flex bg-dark-grey/[0.6] p-2 rounded-lg mb-2 h-full md:ml-5 last:mb-0">
               <div>
                 <div className={`rounded-lg bg-gradient-to-bl ${relic.rarity == 4 ? "from-4star-dark" : "from-5star-dark"} ${relic.rarity == 4 ? "to-4star-light" : "to-5star-light"}`}>
                   <div className="h-16 w-16 relative">
