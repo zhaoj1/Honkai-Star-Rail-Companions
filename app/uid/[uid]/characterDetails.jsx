@@ -137,8 +137,8 @@ export default function CharacterList({character, createAssetUrl}) {
           </div>
           <div>
             {Object.keys(relic_sets_data).map(set_id => 
-              <div key={"set-" + set_id} className="group flex justify-between text-sm bg-dark-grey/[0.6] rounded-lg p-1 mb-1">
-                <span className="absolute scale-0 translate-x-[19rem] bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 flex flex-col gap-4 group-hover:scale-100">{relic_sets.filter(set => set.id == set_id).map(set => <span key={set.id + set.num}>{set.desc}</span>)}</span>
+              <div key={"set-" + set_id} className="group flex justify-between text-sm bg-dark-grey/[0.6] rounded-lg px-2 py-1 mb-1">
+                <span className="absolute scale-0 translate-x-[19rem] bg-dark-grey/[0.95] z-10 p-3 rounded-md text-s text-white text-sm w-96 flex flex-col gap-4 md:group-hover:scale-100">{relic_sets.filter(set => set.id == set_id).map(set => <span key={set.id + set.num}>{set.desc}</span>)}</span>
                 <div>
                   {relic_sets_data[set_id].name}
                 </div>
@@ -162,7 +162,7 @@ export default function CharacterList({character, createAssetUrl}) {
               {rank_icons.map(((icon, index) => 
                 <div key={"eidolon-" + index} className="group mr-1">
                   {/* need eidolon data
-                  <span className="absolute scale-0 translate-x-12 bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 group-hover:scale-100">ok</span> */}
+                  <span className="absolute scale-0 translate-x-12 bg-dark-grey/[0.95] z-10 p-2 rounded-md text-s text-white text-sm w-96 md:group-hover:scale-100">ok</span> */}
                   <div className="h-11 w-11 rounded-full border border-white-500 p-1">
                     <img className="h-9 w-9" src={createAssetUrl(icon)} />
                   </div>
