@@ -1,5 +1,6 @@
 import { html2canvas } from 'html2canvas';
 import Image from 'next/image'
+import Link from 'next/link'
 
 import SkillTrace from './skillTrace.jsx'
 
@@ -269,6 +270,7 @@ export default function CharacterList({character, createAssetUrl}) {
         </div>
       </div>
       <button id="download" className="bg-medium-grey py-1 px-4 rounded-lg text-lg hover:bg-light-grey" onClick={download}>Download</button>
+      <Link className="bg-medium-grey py-1 px-4 rounded-lg text-lg hover:bg-light-grey mt-4" href="/">Return Home</Link>
     </div>
   )
 }

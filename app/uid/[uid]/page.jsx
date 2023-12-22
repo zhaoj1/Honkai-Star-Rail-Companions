@@ -46,7 +46,7 @@ export default function Page() {
   }
 
   return (
-    <main className="min-h-full text-white bg-gradient-radial from-dark-blue from-50% to-dark-purple">
+    <main className="min-h-full">
       <div className={`flex items-center flex-col h-full w-full ${isLoading? "absolute" : "relative"} py-10`}>
         <ToastContainer
           position="top-center"
